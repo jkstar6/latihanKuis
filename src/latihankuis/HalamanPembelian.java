@@ -5,7 +5,6 @@
 package latihankuis;
 
 import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
 
 /**
@@ -36,12 +35,12 @@ public class HalamanPembelian extends JFrame {
     int remaja = 15200;
     int dewasa = 25400;
 
-    HalamanPembelian(String majalah) {
+    HalamanPembelian(String majalah, String username) {
         setVisible(true);
 
         setSize(470,720);
         
-        setTitle("Halaman Pembuttonbelian");
+        setTitle("Halaman Pembelian");
         
         setLocationRelativeTo(null);
         
@@ -97,45 +96,56 @@ public class HalamanPembelian extends JFrame {
         buttonKembali.setFont(new Font("Arial", Font.PLAIN, 18));
         buttonKembali.setBackground(Color.lightGray);
         buttonKembali.addActionListener(e -> {
-
+            dispose();
+            new HalamanUtama(username);
         });
 
         buttonBeli.setBounds(250,220,160,30);
         buttonBeli.setFont(new Font("Arial", Font.PLAIN, 18));
         buttonBeli.setBackground(Color.lightGray);
         buttonBeli.addActionListener(e -> {
+            try {
 
-            int jumlahMajalah = Integer.parseInt(jumlahTextField.getText());
-            int totalHarga = jumlahMajalah * hargaMajalah;
-            labelIsiTotalHarga.setText("Rp" + String.valueOf(totalHarga));
+                int jumlahMajalah = Integer.parseInt(jumlahTextField.getText());
 
-            labelIsiJumlah.setText(jumlahTextField.getText() + " pcs");
+                if(jumlahMajalah <= 0) {
+                    JOptionPane.showMessageDialog(this, "jumlah harus lebih dari 0!");
+                    return;
+                }
 
-            add(labelTotalPembelian);
-            add(labelHargaSatuan);
-            add(labelIsiHargaSatuan);
-            add(labelJumlah);
-            add(labelIsiJumlah);
-            add(labelTotalHarga);
-            add(labelIsiTotalHarga);
+                int totalHarga = jumlahMajalah * hargaMajalah;
+                labelIsiTotalHarga.setText("Rp" + String.valueOf(totalHarga));
 
-            labelTotalPembelian.setBounds(40,270,200,28);
-            labelTotalPembelian.setFont(new Font("Arial", Font.BOLD, 18));
+                labelIsiJumlah.setText(jumlahTextField.getText() + " pcs");
 
-            labelHargaSatuan.setBounds(40,300,200,28);
-            labelHargaSatuan.setFont(new Font("Arial", Font.PLAIN, 18));
-            labelIsiHargaSatuan.setBounds(250,300,200,28);
-            labelIsiHargaSatuan.setFont(new Font("Arial", Font.PLAIN, 18));
+                add(labelTotalPembelian);
+                add(labelHargaSatuan);
+                add(labelIsiHargaSatuan);
+                add(labelJumlah);
+                add(labelIsiJumlah);
+                add(labelTotalHarga);
+                add(labelIsiTotalHarga);
 
-            labelJumlah.setBounds(40,330,200,28);
-            labelJumlah.setFont(new Font("Arial", Font.PLAIN, 18));
-            labelIsiJumlah.setBounds(250,330,200,28);
-            labelIsiJumlah.setFont(new Font("Arial", Font.PLAIN, 18));
+                labelTotalPembelian.setBounds(40,270,200,28);
+                labelTotalPembelian.setFont(new Font("Arial", Font.BOLD, 18));
 
-            labelTotalHarga.setBounds(40,360,200,28);
-            labelTotalHarga.setFont(new Font("Arial", Font.PLAIN, 18));
-            labelIsiTotalHarga.setBounds(250,360,200,28);
-            labelIsiTotalHarga.setFont(new Font("Arial", Font.PLAIN, 18));
+                labelHargaSatuan.setBounds(40,300,200,28);
+                labelHargaSatuan.setFont(new Font("Arial", Font.PLAIN, 18));
+                labelIsiHargaSatuan.setBounds(250,300,200,28);
+                labelIsiHargaSatuan.setFont(new Font("Arial", Font.PLAIN, 18));
+
+                labelJumlah.setBounds(40,330,200,28);
+                labelJumlah.setFont(new Font("Arial", Font.PLAIN, 18));
+                labelIsiJumlah.setBounds(250,330,200,28);
+                labelIsiJumlah.setFont(new Font("Arial", Font.PLAIN, 18));
+
+                labelTotalHarga.setBounds(40,360,200,28);
+                labelTotalHarga.setFont(new Font("Arial", Font.PLAIN, 18));
+                labelIsiTotalHarga.setBounds(250,360,200,28);
+                labelIsiTotalHarga.setFont(new Font("Arial", Font.PLAIN, 18));
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(this, "Harap masukkan angka!");
+            }
         });
 
     }

@@ -23,7 +23,7 @@ public class HalamanUtama extends JFrame {
         
         setSize(470,720);
         
-        setTitle("Home Page");
+        setTitle("Halaman Utama");
         
         setLocationRelativeTo(null);
         
@@ -51,7 +51,7 @@ public class HalamanUtama extends JFrame {
         buttonMajalahAnak.setBackground(Color.lightGray);
         buttonMajalahAnak.addActionListener(e -> {
             dispose();
-            new HalamanPembelian("Majalah Anak");
+            new HalamanPembelian("Majalah Anak", username);
         });
 
         buttonMajalahRemaja.setBounds(20,182,410,32);
@@ -59,7 +59,7 @@ public class HalamanUtama extends JFrame {
         buttonMajalahRemaja.setBackground(Color.lightGray);
         buttonMajalahRemaja.addActionListener(e -> {
             dispose();
-            new HalamanPembelian("Majalah Remaja");
+            new HalamanPembelian("Majalah Remaja", username);
         });
         
         buttonMajalahDewasa.setBounds(20,222,410,32);
@@ -67,7 +67,7 @@ public class HalamanUtama extends JFrame {
         buttonMajalahDewasa.setBackground(Color.lightGray);
         buttonMajalahDewasa.addActionListener(e -> {
             dispose();
-            new HalamanPembelian("Majalah Dewasa");
+            new HalamanPembelian("Majalah Dewasa", username);
         });
 
         setVisible(true);

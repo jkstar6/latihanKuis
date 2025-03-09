@@ -14,7 +14,7 @@ public class LatihanKuis {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        HalamanLogin halLogin = new HalamanLogin();
+        new HalamanLogin();
     }
     
 }
